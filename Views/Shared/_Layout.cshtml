@@ -117,13 +117,13 @@
 
 
 
-            <!-- LOGIN / REGISTER MODAL -->
+            @* AUTHENTICATION MODAL *@
             <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content bg-dark text-light border border-secondary shadow-lg rounded-4"
                          style="background: rgba(15, 15, 15, 0.85) !important; backdrop-filter: blur(20px);">
                         
-                        <!-- Modal Header -->
+                        @* MODAL HEADER *@
                         <div class="modal-header border-bottom border-secondary">
                             <h5 class="modal-title text-warning fw-bold" id="authModalLabel">
                                 <i class="bi bi-ticket-perforated-fill me-2"></i>Access EasyTicket Pro
@@ -132,9 +132,8 @@
                                     aria-label="Close"></button>
                         </div>
 
-                        <!-- Modal Body (Forms) -->
+                        @* MODAL BODY *@
                         <div class="modal-body p-4">
-                            <!-- Tabs за превключване между Login и Register -->
                             <ul class="nav nav-pills nav-fill mb-4 bg-black bg-opacity-50 p-1 rounded-pill border border-secondary"
                                 id="pills-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
@@ -150,20 +149,20 @@
                                 </ul>
 
                                 <div class="tab-content" id="pills-tabContent">
-                                    <!-- LOGIN FORM -->
+                                    @* LOGIN FORM *@
                                     <div class="tab-pane fade show active" id="pills-login" role="tabpanel">
                                         <form>
                                             <div class="mb-3">
-                                                <label class="form-label text-muted small">Email Address</label>
+                                                <label class="form-label text-warning small fw-semibold">Email Address</label>
                                                 <input type="email"
-                                                       class="form-control bg-black text-light border-secondary rounded-pill px-3"
-                                                       placeholder="name@example.com">
+                                                       class="form-control bg-dark text-light border-secondary rounded-pill px-3 py-2"
+                                                       placeholder="">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label text-muted small">Password</label>
+                                                <label class="form-label text-warning small fw-semibold">Password</label>
                                                 <input type="password"
-                                                       class="form-control bg-black text-light border-secondary rounded-pill px-3"
-                                                       placeholder="••••••••">
+                                                       class="form-control bg-dark text-light border-secondary rounded-pill px-3 py-2"
+                                                       placeholder="">
                                             </div>
                                             <button type="submit"
                                                     class="btn btn-warning w-100 fw-bold py-2 rounded-pill text-dark shadow-lg mt-3">
@@ -172,34 +171,34 @@
                                         </form>
                                     </div>
 
-                                    <!-- REGISTER FORM -->
+                                    @* REGISTER FORM *@
                                     <div class="tab-pane fade" id="pills-register" role="tabpanel">
                                         <form>
                                             <div class="row">
                                                 <div class="col-6 mb-3">
-                                                    <label class="form-label text-muted small">First Name</label>
+                                                    <label class="form-label text-warning small fw-semibold">First Name</label>
                                                     <input type="text"
-                                                           class="form-control bg-black text-light border-secondary rounded-pill px-3"
-                                                           placeholder="Ivan">
+                                                           class="form-control bg-dark text-light border-secondary rounded-pill px-3 py-2"
+                                                           placeholder="">
                                                 </div>
                                                 <div class="col-6 mb-3">
-                                                    <label class="form-label text-muted small">Last Name</label>
+                                                    <label class="form-label text-warning small fw-semibold">Last Name</label>
                                                     <input type="text"
-                                                           class="form-control bg-black text-light border-secondary rounded-pill px-3"
-                                                           placeholder="Ivanov">
+                                                           class="form-control bg-dark text-light border-secondary rounded-pill px-3 py-2"
+                                                           placeholder="">
                                                 </div>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label text-muted small">Email Address</label>
+                                                <label class="form-label text-warning small fw-semibold">Email Address</label>
                                                 <input type="email"
-                                                       class="form-control bg-black text-light border-secondary rounded-pill px-3"
-                                                       placeholder="name@example.com">
+                                                       class="form-control bg-dark text-light border-secondary rounded-pill px-3 py-2"
+                                                       placeholder="">
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label text-muted small">Password</label>
+                                                <label class="form-label text-warning small fw-semibold">Password</label>
                                                 <input type="password"
-                                                       class="form-control bg-black text-light border-secondary rounded-pill px-3"
-                                                       placeholder="••••••••">
+                                                       class="form-control bg-dark text-light border-secondary rounded-pill px-3 py-2"
+                                                       placeholder="">
                                             </div>
                                             <button type="submit"
                                                     class="btn btn-warning w-100 fw-bold py-2 rounded-pill text-dark shadow-lg mt-2">
