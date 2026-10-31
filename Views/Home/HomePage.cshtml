@@ -1,9 +1,91 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Welcome to EasyTicket Pro";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to EasyTicket Pro</h1>
-    <h2>Manage your tickets with ease and efficiency</h2>
-    <h3>Get started today and streamline your ticket management process</h3>
-</div>
+<!-- HERO SECTION: Main Banner with Background Image -->
+<section
+    class="py-5 mb-5 text-center text-lg-start rounded-4 shadow-lg border border-warning position-relative overflow-hidden"
+    style="background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), url('/images/BackGround.jpg') center / cover no-repeat;">
+    
+    <div class="container py-4 position-relative z-1">
+        <div class="row align-items-center gy-4">
+            <div class="col-lg-7">
+                <span class="badge bg-warning text-dark px-3 py-2 fs-6 rounded-pill mb-3 fw-bold shadow-sm">
+                    🚀 Premier Ticketing Platform
+                </span>
+                <h1 class="display-4 fw-extrabold text-white mb-3">
+                    Your Pass to the <span class="text-warning">Best Events</span>!
+                </h1>
+                <p class="lead text-light opacity-75 mb-4">
+                    Book tickets for your favorite concerts, sports games, and theater shows in just a few clicks.
+                    Secure, fast, and hassle-free.
+                </p>
+                <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                    <a href="#" class="btn btn-warning btn-lg px-4 fw-bold rounded-pill shadow-sm">
+                        <i class="bi bi-ticket-perforated-fill me-2"></i> Explore Events
+                    </a>
+                    <a href="#" class="btn btn-outline-warning btn-lg px-4 rounded-pill">
+                        <i class="bi bi-play-circle me-2"></i> How It Works
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5 text-center">
+                <div class="p-4 rounded-4 bg-dark bg-opacity-75 border border-warning d-inline-block shadow-lg">
+                    <i class="bi bi-qr-code-scan text-warning display-1 d-block mb-3"></i>
+                    <h5 class="fw-bold text-white mb-1">100% Digital Tickets</h5>
+                    <p class="small text-light opacity-75 mb-0">Get your QR code directly on your phone.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ADVANTAGES / Why Choose EasyTicket Pro -->
+<section class="py-4 mb-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-warning mb-2">Why Choose EasyTicket Pro?</h2>
+        <p class="text-light opacity-75">Everything you need for your next unforgettable experience.</p>
+    </div>
+
+    <div class="row g-4 text-center">
+        <div class="col-md-4">
+            <div class="card h-100 bg-dark bg-opacity-75 text-white border border-secondary p-4 rounded-4 shadow">
+                <div class="mb-3 text-warning">
+                    <i class="bi bi-lightning-charge-fill fs-1"></i>
+                </div>
+                <h4 class="fw-bold mb-2 text-warning">Instant Booking</h4>
+                <p class="text-light opacity-75 small">Purchase your tickets in under 60 seconds with no complex steps
+                    or long queues.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 bg-dark bg-opacity-75 text-white border border-secondary p-4 rounded-4 shadow">
+                    <div class="mb-3 text-warning">
+                        <i class="bi bi-shield-lock-fill fs-1"></i>
+                    </div>
+                    <h4 class="fw-bold mb-2 text-warning">100% Secure Payments</h4>
+                    <p class="text-light opacity-75 small">We use cutting-edge encryption technology to keep your data and
+                        transactions safe.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 bg-dark bg-opacity-75 text-white border border-secondary p-4 rounded-4 shadow">
+                        <div class="mb-3 text-warning">
+                            <i class="bi bi-phone-fill fs-1"></i>
+                        </div>
+                        <h4 class="fw-bold mb-2 text-warning">All in Your Phone</h4>
+                        <p class="text-light opacity-75 small">No printing required – simply scan your digital QR code right at
+                            the venue entrance.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CALL TO ACTION BANNER -->
+            <section class="bg-dark bg-opacity-90 border border-warning text-white p-5 rounded-4 shadow-lg text-center mb-4">
+                <h3 class="fw-bold text-warning mb-2">Hosting Your Own Event?</h3>
+                <p class="lead opacity-90 mb-4">Partner with us and start selling tickets in just minutes!</p>
+                <a href="#" class="btn btn-warning btn-lg fw-bold px-4 rounded-pill text-dark">
+                    <i class="bi bi-building-add me-2"></i> Become a Partner
+                </a>
+            </section>
