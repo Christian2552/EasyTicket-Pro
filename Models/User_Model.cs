@@ -5,6 +5,7 @@ namespace EasyTicket_Pro.Models
 {
     public class User
     {
+        public int Id { get; set; }
         [Required(ErrorMessage = "First Name is required.")]
         [StringLength(15, MinimumLength = 2, ErrorMessage = "First name must be between 2 and 15 characters.")]
         public string FirstName { get; set; } = string.Empty;
