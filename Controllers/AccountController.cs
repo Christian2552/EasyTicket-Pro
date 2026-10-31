@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using EasyTicket_Pro.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace EasyTicket_Pro.Controllers
 {
@@ -14,6 +15,10 @@ namespace EasyTicket_Pro.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            // Hash the password before saving the user to the database
+            var passwordHasher = new PasswordHasher<User>();
+            // Hash the password and store it in the model
+            string hashedPassword = passwordHasher.HashPassword(model, model.Password);
 
             return RedirectToAction("Index", "Home");
         }
