@@ -20,6 +20,27 @@ public class HomeController : Controller
         return View("HomePage");
     }
 
+    // Method that returns the EventPageConcert view when the user navigates to the /Home/EventPage URL.    
+    [HttpGet("/concerts")]
+    public IActionResult EventPageConcert()
+    {
+        return View("EventPageConcert");
+    }
+
+    // Method that returns the EventPageSport view when the user navigates to the /Home/EventPage URL.
+    [HttpGet("/sports")]
+    public IActionResult EventPageSport()
+    {
+        return View("EventPageSport");
+    }
+
+    // Method that returns the EventPageTheater view when the user navigates to the /Home/EventPage URL.
+    [HttpGet("/theaters")]
+    public IActionResult EventPageTheater()
+    {
+        return View("EventPageTheater");
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

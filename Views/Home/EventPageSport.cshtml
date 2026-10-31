@@ -1,0 +1,73 @@
+@{
+    ViewData["Title"] = "Sports Event - EasyTicket Pro";
+}
+
+<div class="container py-5">
+    <!-- Breadcrumb / Back button -->
+    <div class="mb-4">
+        <a href="/home" class="text-warning text-decoration-none d-inline-flex align-items-center gap-1">
+            <i class="bi bi-arrow-left"></i> Back to Home
+        </a>
+    </div>
+
+    <div class="row g-5">
+        <!-- LEFT COLUMN: Sport Banner & Quick Info -->
+        <div class="col-lg-6">
+            <div class="card bg-dark border-secondary shadow-lg overflow-hidden rounded-4">
+                <div class="position-relative">
+                    <!-- Sport Placeholder Icon -->
+                    <div class="bg-secondary text-dark d-flex align-items-center justify-content-center"
+                         style="height: 350px;">
+                        <i class="bi bi-trophy-fill display-1 text-warning"></i>
+                    </div>
+                    <span
+                        class="badge bg-warning text-dark position-absolute top-0 start-0 m-3 px-3 py-2 fw-bold rounded-pill">
+                        Sports Match
+                    </span>
+                </div>
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center text-muted mb-3">
+                        <span><i class="bi bi-calendar3 text-warning me-1"></i> 22 July 2026</span>
+                        <span><i class="bi bi-clock text-warning me-1"></i> 19:30h</span>
+                    </div>
+                    <p class="text-light mb-0"><i class="bi bi-geo-alt-fill text-warning me-1"></i> Vivacom Arena /
+                        Georgi Asparuhov, Sofia</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Title, Description & Booking -->
+            <div class="col-lg-6 d-flex flex-column justify-content-between">
+                <div>
+                    <h1 class="display-5 fw-bold text-light mb-3">Championship Finals: Derby Night 2026</h1>
+                    <p class="text-muted fs-5 mb-4">
+                        Witness the most anticipated football clash of the season live! Grab your seats to support your
+                        favorite team, feel the incredible stadium energy, and experience history in the making.
+                    </p>
+
+                    <div class="p-4 bg-black bg-opacity-50 border border-secondary rounded-4 mb-4">
+                        <h4 class="text-warning fw-bold mb-3">Sector Pricing</h4>
+                        <div class="d-flex justify-content-between align-items-center mb-2 text-light">
+                            <span>Sector A / B (Standard)</span>
+                            <span class="fw-bold text-warning fs-4">$25.00</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2 text-light">
+                            <span>Sector V (Central Tribunes)</span>
+                            <span class="fw-bold text-warning fs-4">$50.00</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center text-light">
+                            <span>VIP Box + Hospitality</span>
+                            <span class="fw-bold text-warning fs-4">$150.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <div class="d-grid gap-2">
+                    <button class="btn btn-warning btn-lg fw-bold py-3 rounded-pill shadow-lg text-dark">
+                        <i class="bi bi-ticket-perforated-fill me-2"></i> Get Match Tickets
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -24,7 +24,6 @@ C:\Users\user\Desktop\EasyTicket Pro\obj\Debug\net10.0\rjsmcshtml.dswa.cache.jso
 C:\Users\user\Desktop\EasyTicket Pro\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\user\Desktop\EasyTicket Pro\obj\Debug\net10.0\scopedcss\bundle\EasyTicket Pro.styles.css
 C:\Users\user\Desktop\EasyTicket Pro\obj\Debug\net10.0\scopedcss\projectbundle\EasyTicket Pro.bundle.scp.css
-C:\Users\user\Desktop\EasyTicket Pro\obj\Debug\net10.0\compressed\6l8886x2ve-{0}-b9sayid5wm-b9sayid5wm.gz
 C:\Users\user\Desktop\EasyTicket Pro\obj\Debug\net10.0\compressed\qk8menyexp-{0}-61n19gt1b8-61n19gt1b8.gz
 C:\Users\user\Desktop\EasyTicket Pro\obj\Debug\net10.0\compressed\d08x1uoj11-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 C:\Users\user\Desktop\EasyTicket Pro\obj\Debug\net10.0\compressed\2dij5qfyix-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -98,3 +97,4 @@ C:\Users\user\Desktop\EasyTicket Pro\obj\Debug\net10.0\refint\EasyTicket Pro.dll
 C:\Users\user\Desktop\EasyTicket Pro\obj\Debug\net10.0\EasyTicket Pro.pdb
 C:\Users\user\Desktop\EasyTicket Pro\obj\Debug\net10.0\EasyTicket Pro.genruntimeconfig.cache
 C:\Users\user\Desktop\EasyTicket Pro\obj\Debug\net10.0\ref\EasyTicket Pro.dll
+C:\Users\user\Desktop\EasyTicket Pro\obj\Debug\net10.0\compressed\6l8886x2ve-{0}-1mgnq6bsk1-1mgnq6bsk1.gz

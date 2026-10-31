@@ -20,6 +20,9 @@ html {
 body {
   overflow-x: hidden;
     max-width: 100%;
+    body {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('../images/BackGround.jpg') fixed center / cover no-repeat !important;
+}
 }
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
@@ -29,4 +32,9 @@ body {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
+}
+
+/* Transparent Cards to make background visible */
+.card, .bg-dark {
+    background-color: rgba(18, 18, 18, 0.85) !important;
 }
