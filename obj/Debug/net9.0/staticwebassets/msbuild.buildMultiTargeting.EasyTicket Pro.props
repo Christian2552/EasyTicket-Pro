@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\EasyTicket Pro.props" />
+</Project>

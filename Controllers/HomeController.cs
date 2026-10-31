@@ -13,14 +13,11 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    // Just a simple action method that returns the HomePage view when the user navigates to the /Home/HomePage URL.
+    // GET: /Home/HomePage
     public IActionResult Index()
     {
-        return View();
-    }
-
-    public IActionResult Privacy()
-    {
-        return View();
+        return View("HomePage");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
