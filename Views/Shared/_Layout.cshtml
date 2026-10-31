@@ -2,6 +2,7 @@
 <html lang="bg">
 
 <head>
+    @model EasyTicket_Pro.Models.User
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - EasyTicket Pro</title>
@@ -173,32 +174,43 @@
 
                                     @* REGISTER FORM *@
                                     <div class="tab-pane fade" id="pills-register" role="tabpanel">
-                                        <form>
+                                        <form asp-controller="Account" asp-action="Register" method="post">
+        
+                                            @* Общ списък с грешки, ако има такива *@
+                                            <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+
                                             <div class="row">
                                                 <div class="col-6 mb-3">
                                                     <label class="form-label text-warning small fw-semibold">First Name</label>
-                                                    <input type="text"
+                                                    <input type="text" asp-for="FirstName"
                                                            class="form-control bg-dark text-light border-secondary rounded-pill px-3 py-2"
-                                                           placeholder="">
+                                                           placeholder="Ivan">
+                                                    <!-- Твоето съобщение ще се появи тук автоматично: -->
+                                                    <span asp-validation-for="FirstName"
+                                                          class="text-danger small mt-1 d-block"></span>
                                                 </div>
                                                 <div class="col-6 mb-3">
                                                     <label class="form-label text-warning small fw-semibold">Last Name</label>
-                                                    <input type="text"
+                                                    <input type="text" asp-for="LastName"
                                                            class="form-control bg-dark text-light border-secondary rounded-pill px-3 py-2"
-                                                           placeholder="">
+                                                           placeholder="Ivanov">
+                                                    <span asp-validation-for="LastName"
+                                                          class="text-danger small mt-1 d-block"></span>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label text-warning small fw-semibold">Email Address</label>
-                                                <input type="email"
+                                                <input type="email" asp-for="Email"
                                                        class="form-control bg-dark text-light border-secondary rounded-pill px-3 py-2"
-                                                       placeholder="">
+                                                       placeholder="name@example.com">
+                                                <span asp-validation-for="Email" class="text-danger small mt-1 d-block"></span>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label text-warning small fw-semibold">Password</label>
-                                                <input type="password"
+                                                <input type="password" asp-for="Password"
                                                        class="form-control bg-dark text-light border-secondary rounded-pill px-3 py-2"
-                                                       placeholder="">
+                                                       placeholder="••••••••">
+                                                <span asp-validation-for="Password" class="text-danger small mt-1 d-block"></span>
                                             </div>
                                             <button type="submit"
                                                     class="btn btn-warning w-100 fw-bold py-2 rounded-pill text-dark shadow-lg mt-2">
