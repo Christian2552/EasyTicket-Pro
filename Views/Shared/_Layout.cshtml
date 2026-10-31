@@ -60,13 +60,18 @@
                     </ul>
 
                     @* USER ACTIONS *@
-                    <div class="d-flex align-items-center gap-2">
-                        <a href="#" class="btn btn-outline-light rounded-pill px-3">
-                            <i class="bi bi-box-arrow-in-right me-1"></i> Sign in
-                        </a>
-                        <a href="#" class="btn btn-warning rounded-pill px-3 fw-bold">
+                    <div class="d-flex align-items-center gap-2" id="guestActions">
+                        <!-- Sign In Button triggers Modal -->
+                        <button type="button" class="btn btn-outline-light rounded-pill px-3" data-bs-toggle="modal"
+                                data-bs-target="#authModal">
+                            <i class="bi bi-box-arrow-in-right me-1"></i> Sign In
+                        </button>
+    
+                        <!-- Register Button triggers Modal -->
+                        <button type="button" class="btn btn-warning rounded-pill px-3 fw-bold" data-bs-toggle="modal"
+                                data-bs-target="#authModal">
                             <i class="bi bi-person-plus me-1"></i> Register
-                        </a>
+                        </button>
                     </div>
 
                 </div>
@@ -108,6 +113,107 @@
             <script src="~/lib/jquery/dist/jquery.min.js"></script>
             <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
             @await RenderSectionAsync("Scripts", required: false)
-        </body>
 
-    </html>
+
+
+
+            <!-- LOGIN / REGISTER MODAL -->
+            <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content bg-dark text-light border border-secondary shadow-lg rounded-4"
+                         style="background: rgba(15, 15, 15, 0.85) !important; backdrop-filter: blur(20px);">
+                        
+                        <!-- Modal Header -->
+                        <div class="modal-header border-bottom border-secondary">
+                            <h5 class="modal-title text-warning fw-bold" id="authModalLabel">
+                                <i class="bi bi-ticket-perforated-fill me-2"></i>Access EasyTicket Pro
+                            </h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+
+                        <!-- Modal Body (Forms) -->
+                        <div class="modal-body p-4">
+                            <!-- Tabs за превключване между Login и Register -->
+                            <ul class="nav nav-pills nav-fill mb-4 bg-black bg-opacity-50 p-1 rounded-pill border border-secondary"
+                                id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active rounded-pill text-warning fw-semibold" id="pills-login-tab"
+                                            data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab">Sign
+                                        In</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link rounded-pill text-light fw-semibold" id="pills-register-tab"
+                                                data-bs-toggle="pill" data-bs-target="#pills-register" type="button"
+                                                role="tab">Register</button>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content" id="pills-tabContent">
+                                    <!-- LOGIN FORM -->
+                                    <div class="tab-pane fade show active" id="pills-login" role="tabpanel">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label class="form-label text-muted small">Email Address</label>
+                                                <input type="email"
+                                                       class="form-control bg-black text-light border-secondary rounded-pill px-3"
+                                                       placeholder="name@example.com">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label text-muted small">Password</label>
+                                                <input type="password"
+                                                       class="form-control bg-black text-light border-secondary rounded-pill px-3"
+                                                       placeholder="••••••••">
+                                            </div>
+                                            <button type="submit"
+                                                    class="btn btn-warning w-100 fw-bold py-2 rounded-pill text-dark shadow-lg mt-3">
+                                                Sign In
+                                            </button>
+                                        </form>
+                                    </div>
+
+                                    <!-- REGISTER FORM -->
+                                    <div class="tab-pane fade" id="pills-register" role="tabpanel">
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-6 mb-3">
+                                                    <label class="form-label text-muted small">First Name</label>
+                                                    <input type="text"
+                                                           class="form-control bg-black text-light border-secondary rounded-pill px-3"
+                                                           placeholder="Ivan">
+                                                </div>
+                                                <div class="col-6 mb-3">
+                                                    <label class="form-label text-muted small">Last Name</label>
+                                                    <input type="text"
+                                                           class="form-control bg-black text-light border-secondary rounded-pill px-3"
+                                                           placeholder="Ivanov">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label text-muted small">Email Address</label>
+                                                <input type="email"
+                                                       class="form-control bg-black text-light border-secondary rounded-pill px-3"
+                                                       placeholder="name@example.com">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label text-muted small">Password</label>
+                                                <input type="password"
+                                                       class="form-control bg-black text-light border-secondary rounded-pill px-3"
+                                                       placeholder="••••••••">
+                                            </div>
+                                            <button type="submit"
+                                                    class="btn btn-warning w-100 fw-bold py-2 rounded-pill text-dark shadow-lg mt-2">
+                                                Create Account
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </body>
+
+        </html>
