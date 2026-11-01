@@ -1,44 +1,82 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using EasyTicket_Pro.Models;
+using EasyTicket_Pro.Data;
 
 namespace EasyTicket_Pro.Controllers;
 
 public class HomeController : Controller
 {
+    private readonly AppDbContext _context;
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(AppDbContext context, ILogger<HomeController> logger)
     {
+        _context = context;
         _logger = logger;
     }
 
-    // Just a simple action method that returns the HomePage view when the user navigates to the /Home/HomePage URL.
-    // GET: /Home/HomePage
+    // Контролиране на концертните събития от базата
+    public IActionResult Concerts()
+    {
+        var concertEvents = _context.Events
+                                    .Where(e => e.Category == "Concerts")
+                                    .ToList();
+        return View(concertEvents);
+    }
+
+    // Контролиране на спортните събития от базата
+    public IActionResult Sports()
+    {
+        var sportsEvents = _context.Events
+                                   .Where(e => e.Category == "Sports")
+                                   .ToList();
+        return View(sportsEvents);
+    }
+
+    // Контролиране на театралните събития от базата
+    public IActionResult Theater()
+    {
+        var theaterEvents = _context.Events
+                                    .Where(e => e.Category == "Theater")
+                                    .ToList();
+        return View(theaterEvents);
+    }
+
+    // Начална страница (Home/HomePage)
     public IActionResult Index()
     {
         return View("HomePage");
     }
 
-    // Method that returns the EventPageConcert view when the user navigates to the /Home/EventPage URL.    
+    // Страница за концерти сcustom рутиране
     [HttpGet("/concerts")]
     public IActionResult EventPageConcert()
     {
-        return View("EventPageConcert");
+        var concertEvents = _context.Events
+                                    .Where(e => e.Category == "Concerts")
+                                    .ToList();
+        return View("EventPageConcert", concertEvents);
     }
 
-    // Method that returns the EventPageSport view when the user navigates to the /Home/EventPage URL.
+    // Страница за спорт с custom рутиране
     [HttpGet("/sports")]
     public IActionResult EventPageSport()
     {
-        return View("EventPageSport");
+        var sportsEvents = _context.Events
+                                   .Where(e => e.Category == "Sports")
+                                   .ToList();
+        return View("EventPageSport", sportsEvents);
     }
 
-    // Method that returns the EventPageTheater view when the user navigates to the /Home/EventPage URL.
+    // Страница за театър с custom рутиране
     [HttpGet("/theaters")]
     public IActionResult EventPageTheater()
     {
-        return View("EventPageTheater");
+        var theaterEvents = _context.Events
+                                    .Where(e => e.Category == "Theater")
+                                    .ToList();
+        return View("EventPageTheater", theaterEvents);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -1,5 +1,7 @@
+@model List<EasyTicket_Pro.Models.Event>
+
 @{
-    ViewData["Title"] = "Event Details - EasyTicket Pro";
+    ViewData["Title"] = "Concerts - EasyTicket Pro";
 }
 
 <div class="container py-5">
@@ -10,60 +12,84 @@
         </a>
     </div>
 
-    <div class="row g-5">
-        <!-- LEFT COLUMN: Event Image & Quick Info -->
-        <div class="col-lg-6">
-            <div class="card bg-dark border-secondary shadow-lg overflow-hidden rounded-4">
-                <div class="position-relative">
-                    <!-- Event Placeholder Image -->
-                    <div class="bg-secondary text-dark d-flex align-items-center justify-content-center"
-                         style="height: 350px;">
-                        <i class="bi bi-music-note-beamed display-1 text-warning"></i>
-                    </div>
-                    <span
-                        class="badge bg-warning text-dark position-absolute top-0 start-0 m-3 px-3 py-2 fw-bold rounded-pill">
-                        Concert
-                    </span>
-                </div>
-                <div class="card-body p-4">
-                    <div class="d-flex justify-content-between align-items-center text-muted mb-3">
-                        <span><i class="bi bi-calendar3 text-warning me-1"></i> 15 June 2026</span>
-                        <span><i class="bi bi-clock text-warning me-1"></i> 20:00h</span>
-                    </div>
-                    <p class="text-light mb-0"><i class="bi bi-geo-alt-fill text-warning me-1"></i> Arena Armeec, Sofia
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- RIGHT COLUMN: Title, Description & Booking -->
-        <div class="col-lg-6 d-flex flex-column justify-content-between">
-            <div>
-                <h1 class="display-5 fw-bold text-light mb-3">Rock Legends World Tour 2026</h1>
-                <p class="text-light fs-5 mb-4 opacity-75">
-                    Experience the ultimate rock concert of the year live! Featuring top international artists,
-                    state-of-the-art stage effects, and an unforgettable atmosphere.
-                </p>
-
-                <div class="p-4 bg-black bg-opacity-50 border border-secondary rounded-4 mb-4">
-                    <h4 class="text-warning fw-bold mb-3">Ticket Pricing</h4>
-                    <div class="d-flex justify-content-between align-items-center mb-2 text-light">
-                        <span>Standard Access</span>
-                        <span class="fw-bold text-warning fs-4">$45.00</span>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center text-light">
-                        <span>VIP Front Row + Meet & Greet</span>
-                        <span class="fw-bold text-warning fs-4">$120.00</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Action Button -->
-            <div class="d-grid gap-2">
-                <button class="btn btn-warning btn-lg fw-bold py-3 rounded-pill shadow-lg text-dark">
-                    <i class="bi bi-ticket-perforated-fill me-2"></i> Book Tickets Now
-                </button>
-            </div>
-        </div>
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center mb-5 border-bottom border-secondary pb-3">
+        <h1 class="display-5 fw-bold text-light">
+            <i class="bi bi-music-note-beamed text-warning me-2"></i> Upcoming Concerts
+        </h1>
+        <span class="badge bg-warning text-dark fs-6 px-3 py-2 rounded-pill fw-bold">
+            @(Model != null ? Model.Count : 0) Available
+        </span>
     </div>
-</div>
+
+    @if (Model == null || !Model.Any())
+    {
+        <!-- Empty State -->
+        <div class="card bg-dark text-center border-secondary shadow-lg p-5 rounded-4">
+            <div class="card-body">
+                <i class="bi bi-calendar-x display-1 text-secondary mb-3"></i>
+                <h3 class="text-warning fw-bold">No Concerts Found</h3>
+                <p class="text-secondary mb-4">There are currently no concerts available in the database. Please check back
+                    later!</p>
+                    <a href="/home" class="btn btn-outline-warning rounded-pill px-4 fw-bold">Return to Home</a>
+                </div>
+            </div>
+        }
+    else
+        {
+            <!-- Events Grid -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                @foreach (var evt in Model)
+                {
+                    <div class="col">
+                        <div
+                            class="card bg-dark text-light border-secondary shadow-lg h-100 rounded-4 overflow-hidden d-flex flex-column">
+                        
+                            <!-- Card Header / Category Badge -->
+                            <div class="p-4 pb-0 d-flex justify-content-between align-items-center">
+                                <span class="badge bg-warning text-dark px-3 py-2 fw-bold rounded-pill">
+                                    @evt.Category
+                                </span>
+                                <span class="text-warning fw-bold fs-4">
+                                    $@evt.Price.ToString("0.00")
+                                </span>
+                            </div>
+
+                            <!-- Card Body -->
+                            <div class="card-body p-4 d-flex flex-column flex-grow-1">
+                                <h4 class="card-title text-light fw-bold mb-3">@evt.Title</h4>
+                            
+                                <p class="card-text text-secondary small flex-grow-1 mb-4" style="opacity: 0.85;">
+                                    @evt.Description
+                                </p>
+
+                                <!-- Event Meta Info -->
+                                <div class="p-3 bg-black bg-opacity-50 border border-secondary rounded-3 mb-4 small">
+                                    <div class="mb-2 text-light">
+                                        <i class="bi bi-calendar3 text-warning me-2"></i>
+                                        @evt.Date.ToString("dd MMMM yyyy")
+                                    </div>
+                                    <div class="mb-2 text-light">
+                                        <i class="bi bi-clock text-warning me-2"></i>
+                                        @evt.Date.ToString("HH:mm")h
+                                    </div>
+                                    <div class="text-light">
+                                        <i class="bi bi-geo-alt-fill text-warning me-2"></i>
+                                        @evt.Location
+                                    </div>
+                                </div>
+
+                                <!-- Action Button -->
+                                <div class="mt-auto">
+                                    <button class="btn btn-warning w-100 fw-bold py-2 rounded-pill text-dark shadow-sm">
+                                        <i class="bi bi-ticket-perforated-fill me-1"></i> Book Tickets Now
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
