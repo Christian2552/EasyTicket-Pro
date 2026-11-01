@@ -81,9 +81,13 @@
 
                                 <!-- Action Button -->
                                 <div class="mt-auto">
-                                    <button class="btn btn-warning w-100 fw-bold py-2 rounded-pill text-dark shadow-sm">
-                                        <i class="bi bi-ticket-perforated-fill me-1"></i> Reserve Theater Seats
-                                    </button>
+                                    <form asp-controller="Home" asp-action="BookTicket" method="post">
+                                        <input type="hidden" name="eventId" value="@evt.Id" />
+                                        <button type="submit"
+                                                class="btn btn-warning w-100 fw-bold py-2 rounded-pill text-dark shadow-sm">
+                                            <i class="bi bi-ticket-perforated-fill me-1"></i> Book Tickets Now
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
 

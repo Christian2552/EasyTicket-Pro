@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore; // Задължително за .Include()
 using EasyTicket_Pro.Data;
 using EasyTicket_Pro.Models;
 
@@ -53,10 +54,10 @@ namespace EasyTicket_Pro.Controllers
 
                 // 3. Автоматично влизане в профила след успешна регистрация
                 var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, user.Email),
-            new Claim("FullName", $"{user.FirstName} {user.LastName}")
-        };
+                {
+                    new Claim(ClaimTypes.Name, user.Email),
+                    new Claim("FullName", $"{user.FirstName} {user.LastName}")
+                };
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
@@ -65,7 +66,6 @@ namespace EasyTicket_Pro.Controllers
             }
             else
             {
-                // ТОВА ЩЕ ИЗПИШЕ ВСИЧКИ ГРЕШКИ ОТ ВАЛИДАЦИЯТА В КОНЗОЛАТА НА ТЕРМИНАЛА:
                 foreach (var state in ModelState)
                 {
                     foreach (var error in state.Value.Errors)
@@ -98,10 +98,10 @@ namespace EasyTicket_Pro.Controllers
                 if (result == PasswordVerificationResult.Success)
                 {
                     var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.Email),
-                new Claim("FullName", $"{user.FirstName} {user.LastName}")
-            };
+                    {
+                        new Claim(ClaimTypes.Name, user.Email),
+                        new Claim("FullName", $"{user.FirstName} {user.LastName}")
+                    };
 
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
@@ -124,7 +124,6 @@ namespace EasyTicket_Pro.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-
         [HttpGet]
         public IActionResult ProfilePage()
         {
@@ -143,6 +142,14 @@ namespace EasyTicket_Pro.Controllers
             {
                 return NotFound();
             }
+
+            // Извличаме билетите на потребителя заедно със събитията към тях за таблицата в профила
+            var myTickets = _context.Tickets
+                                    .Where(t => t.UserId == user.Id)
+                                    .Include(t => t.Event)
+                                    .ToList();
+
+            ViewBag.MyTickets = myTickets;
 
             // Pass the user data to the view
             return View("~/Views/Home/ProfilePage.cshtml", user);
@@ -176,7 +183,5 @@ namespace EasyTicket_Pro.Controllers
             // Redirect to the home page after account deletion
             return RedirectToAction("Index", "Home");
         }
-
-
     }
 }

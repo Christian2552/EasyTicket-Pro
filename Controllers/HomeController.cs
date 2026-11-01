@@ -49,7 +49,7 @@ public class HomeController : Controller
         return View("HomePage");
     }
 
-    // Страница за концерти сcustom рутиране
+    // Страница за концерти с custom рутиране
     [HttpGet("/concerts")]
     public IActionResult EventPageConcert()
     {
@@ -77,6 +77,44 @@ public class HomeController : Controller
                                     .Where(e => e.Category == "Theater")
                                     .ToList();
         return View("EventPageTheater", theaterEvents);
+    }
+
+    // Логика за запазване / купуване на билет
+    [HttpPost]
+    public IActionResult BookTicket(int eventId)
+    {
+        // Vzimame imeyla na veche vleznalia potrebitel ot cookie-to (identifikaciyata)
+        var userEmail = User.Identity?.Name;
+
+        if (string.IsNullOrEmpty(userEmail))
+        {
+            // Ako ne e vleznal, go prashtame kum nachalnoto myasto
+            return RedirectToAction("Index", "Home");
+        }
+
+        var user = _context.Users.FirstOrDefault(u => u.Email == userEmail);
+        var evnt = _context.Events.Find(eventId);
+
+        if (user == null || evnt == null)
+        {
+            return NotFound();
+        }
+
+        // Suzdavame bilet v bazata danni
+        var ticket = new Ticket
+        {
+            UserId = user.Id,
+            EventId = evnt.Id,
+            Quantity = 1,
+            TotalPrice = evnt.Price,
+            PurchasedAt = DateTime.Now
+        };
+
+        _context.Tickets.Add(ticket);
+        _context.SaveChanges();
+
+        // Sled uspeshno kupuvane, prenasochvame go kym profila da si vidi istoriyata
+        return RedirectToAction("ProfilePage", "Account");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
