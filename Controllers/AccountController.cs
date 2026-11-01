@@ -13,6 +13,7 @@ namespace EasyTicket_Pro.Controllers
         private readonly AppDbContext _context;
         private readonly PasswordHasher<User> _passwordHasher;
 
+        // Constructor to initialize the AccountController with the database context and password hasher
         public AccountController(AppDbContext context)
         {
             _context = context;
@@ -146,5 +147,36 @@ namespace EasyTicket_Pro.Controllers
             // Pass the user data to the view
             return View("~/Views/Home/ProfilePage.cshtml", user);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteAccount()
+        {
+            // Get the email of the currently logged-in user
+            var userEmail = User.Identity?.Name;
+
+            if (string.IsNullOrEmpty(userEmail))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            //find the user in the database based on the email
+            var user = _context.Users.FirstOrDefault(u => u.Email == userEmail);
+
+            if (user != null)
+            {
+                //delete the user from the database
+                _context.Users.Remove(user);
+                _context.SaveChanges();
+
+                //sign out the user after deleting the account
+                await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            }
+
+            // Redirect to the home page after account deletion
+            return RedirectToAction("Index", "Home");
+        }
+
+
     }
 }

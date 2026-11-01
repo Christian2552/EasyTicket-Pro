@@ -8,7 +8,7 @@
     class="py-5 mb-5 text-center text-lg-start rounded-4 shadow-lg border border-warning position-relative overflow-hidden"
     style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('/A/Photos/BackGround.jpg') fixed center / cover no-repeat !important;">
     
-    <div class="container py-4 position-relative z-1">
+    <div class="container py-5 position-relative z-1 mb-5" style="min-height: 44vh;">
         <div class="row align-items-center gy-4">
             <div class="col-lg-7">
                 <span class="badge bg-warning text-dark px-3 py-2 fs-6 rounded-pill mb-3 fw-bold shadow-sm">
@@ -21,20 +21,40 @@
                     Book tickets for your favorite concerts, sports games, and theater shows in just a few clicks.
                     Secure, fast, and hassle-free.
                 </p>
+            
                 <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
-                    <a href="#" class="btn btn-warning btn-lg px-4 fw-bold rounded-pill shadow-sm">
-                        <i class="bi bi-ticket-perforated-fill me-2"></i> Explore Events
-                    </a>
-                    <a href="#" class="btn btn-outline-warning btn-lg px-4 rounded-pill">
+                    <div class="dropdown d-inline-block">
+                        <button class="btn btn-warning btn-lg px-4 fw-bold rounded-pill shadow-sm dropdown-toggle"
+                                type="button" id="exploreDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-ticket-perforated-fill me-2"></i> Explore Events
+                        </button>
+
+                        <ul class="dropdown-menu dropdown-menu-dark bg-dark border-secondary shadow-lg rounded-4 p-2 mt-2"
+                            aria-labelledby="exploreDropdown"
+                            style="background: rgba(15, 15, 15, 0.95) !important; backdrop-filter: blur(20px);">
+    
+                            <li>
+                                <a class="dropdown-item text-light rounded-pill px-3 py-2 my-1" href="/concerts">
+                                    <i class="bi bi-music-note-beamed text-warning me-2"></i> Concerts
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-light rounded-pill px-3 py-2 my-1" href="/sports">
+                                    <i class="bi bi-trophy-fill text-warning me-2"></i> Sports
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-light rounded-pill px-3 py-2 my-1" href="/theaters">
+                                    <i class="bi bi-mask text-warning me-2"></i> Theater
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                
+                    <a href="https://www.youtube.com/watch?v=GBIIQ0kP15E" target="_blank"
+                       class="btn btn-outline-warning btn-lg px-4 rounded-pill">
                         <i class="bi bi-play-circle me-2"></i> How It Works
                     </a>
-                </div>
-            </div>
-            <div class="col-lg-5 text-center">
-                <div class="p-4 rounded-4 bg-dark bg-opacity-75 border border-warning d-inline-block shadow-lg">
-                    <i class="bi bi-qr-code-scan text-warning display-1 d-block mb-3"></i>
-                    <h5 class="fw-bold text-white mb-1">100% Digital Tickets</h5>
-                    <p class="small text-light opacity-75 mb-0">Get your QR code directly on your phone.</p>
                 </div>
             </div>
         </div>
