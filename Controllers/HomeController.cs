@@ -16,7 +16,7 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    // Контролиране на концертните събития от базата
+    // Controller for concert events from the database
     public IActionResult Concerts()
     {
         var concertEvents = _context.Events
@@ -25,7 +25,7 @@ public class HomeController : Controller
         return View(concertEvents);
     }
 
-    // Контролиране на спортните събития от базата
+    // Controller for sports events from the database
     public IActionResult Sports()
     {
         var sportsEvents = _context.Events
@@ -34,7 +34,7 @@ public class HomeController : Controller
         return View(sportsEvents);
     }
 
-    // Контролиране на театралните събития от базата
+    // Controller for theater events from the database
     public IActionResult Theater()
     {
         var theaterEvents = _context.Events
@@ -43,13 +43,13 @@ public class HomeController : Controller
         return View(theaterEvents);
     }
 
-    // Начална страница (Home/HomePage)
+    // Home page of the application
     public IActionResult Index()
     {
         return View("HomePage");
     }
 
-    // Страница за концерти с custom рутиране
+    // Page for concert events with custom routing
     [HttpGet("/concerts")]
     public IActionResult EventPageConcert()
     {
@@ -59,7 +59,7 @@ public class HomeController : Controller
         return View("EventPageConcert", concertEvents);
     }
 
-    // Страница за спорт с custom рутиране
+    // Page for sports events with custom routing
     [HttpGet("/sports")]
     public IActionResult EventPageSport()
     {
@@ -69,7 +69,7 @@ public class HomeController : Controller
         return View("EventPageSport", sportsEvents);
     }
 
-    // Страница за театър с custom рутиране
+    // Page for theater events with custom routing
     [HttpGet("/theaters")]
     public IActionResult EventPageTheater()
     {
@@ -79,16 +79,16 @@ public class HomeController : Controller
         return View("EventPageTheater", theaterEvents);
     }
 
-    // Логика за запазване / купуване на билет
+    // Logic for booking a ticket for a specific event
     [HttpPost]
     public IActionResult BookTicket(int eventId)
     {
-        // Vzimame imeyla na veche vleznalia potrebitel ot cookie-to (identifikaciyata)
+        // Take the email of the currently logged-in user
         var userEmail = User.Identity?.Name;
 
         if (string.IsNullOrEmpty(userEmail))
         {
-            // Ako ne e vleznal, go prashtame kum nachalnoto myasto
+            // If the user is not logged in, redirect to the home page or login page
             return RedirectToAction("Index", "Home");
         }
 
@@ -100,7 +100,7 @@ public class HomeController : Controller
             return NotFound();
         }
 
-        // Suzdavame bilet v bazata danni
+        // Create a new ticket for the user and the selected event
         var ticket = new Ticket
         {
             UserId = user.Id,
@@ -113,7 +113,7 @@ public class HomeController : Controller
         _context.Tickets.Add(ticket);
         _context.SaveChanges();
 
-        // Sled uspeshno kupuvane, prenasochvame go kym profila da si vidi istoriyata
+        // After successful booking, redirect to the user's profile page to view their tickets
         return RedirectToAction("ProfilePage", "Account");
     }
 

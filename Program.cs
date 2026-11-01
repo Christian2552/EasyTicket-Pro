@@ -39,7 +39,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
-// СЕСИЯТА ТРЯБВА ДА Е ПРЕДИ AUTHENTICATION И AUTHORIZATION
+// The Session must be Authentication and Authrization before the app.MapControllerRoute() to work properly.
 app.UseSession();
 
 app.UseAuthentication();

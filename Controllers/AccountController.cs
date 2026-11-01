@@ -52,7 +52,7 @@ namespace EasyTicket_Pro.Controllers
                 _context.SaveChanges();
                 Console.WriteLine("USER CREATED IN DATABASE!");
 
-                // 3. Автоматично влизане в профила след успешна регистрация
+                // 3. After successful registration, sign in the user and create claims for authentication
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, user.Email),
@@ -143,7 +143,7 @@ namespace EasyTicket_Pro.Controllers
                 return NotFound();
             }
 
-            // Извличаме билетите на потребителя заедно със събитията към тях за таблицата в профила
+            // Retrieve the tickets associated with the user and include the related event details
             var myTickets = _context.Tickets
                                     .Where(t => t.UserId == user.Id)
                                     .Include(t => t.Event)
@@ -174,10 +174,10 @@ namespace EasyTicket_Pro.Controllers
                 return NotFound();
             }
 
-            // Актуализираме полетата с новите стойности подадени от формата
+            // Update the user's profile information
             user.FirstName = firstName;
             user.LastName = lastName;
-            user.Description = description;
+            user.Description = description ?? string.Empty;
 
             _context.Users.Update(user);
             _context.SaveChanges();
