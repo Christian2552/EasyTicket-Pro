@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EasyTicket Pro")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+15c3347e83315ca3bc8e2c214329122b8503897b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b154fc45018829567b7a2552d5b95bce2859c014")]
 [assembly: System.Reflection.AssemblyProductAttribute("EasyTicket Pro")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EasyTicket Pro")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
