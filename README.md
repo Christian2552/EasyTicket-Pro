@@ -40,4 +40,4 @@
 
 1. Клонирайте репозиторито:
    ```bash
-   git clone [https://github.com/your-username/easy-ticket-pro.git](https://github.com/your-username/easy-ticket-pro.git)
+   git clone [//github.com/Christian2552/EasyTicket-Pro.git)
