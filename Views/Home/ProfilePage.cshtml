@@ -7,7 +7,7 @@
 <div class="container py-5">
     <div class="row g-4">
         
-        @* Left Block: User Profile Information*@
+        @* Left Block: User Profile Information *@
         <div class="col-lg-4">
             <div class="card bg-dark text-light border border-secondary shadow-lg rounded-4 p-4 h-100"
                  style="background: rgba(15, 15, 15, 0.85) !important; backdrop-filter: blur(20px);">
@@ -20,31 +20,50 @@
 
                 <hr class="border-secondary">
 
-                <div class="mb-3">
-                    <label class="form-label text-warning small fw-semibold">First Name</label>
-                    <input type="text" class="form-control bg-dark text-light border-secondary rounded-pill px-3 py-2"
-                           value="@Model.FirstName" readonly>
-                </div>
+                <!-- Форма за Update на профила -->
+                <form asp-controller="Account" asp-action="UpdateProfile" method="post">
+                    
+                    <div class="mb-3">
+                        <label class="form-label text-warning small fw-semibold">First Name</label>
+                        <input type="text"
+                               class="form-control bg-dark text-light border-secondary rounded-pill px-3 py-2"
+                               name="firstName" value="@Model.FirstName" required>
+                    </div>
 
-                <div class="mb-3">
-                    <label class="form-label text-warning small fw-semibold">Last Name</label>
-                    <input type="text" class="form-control bg-dark text-light border-secondary rounded-pill px-3 py-2"
-                           value="@Model.LastName" readonly>
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label text-warning small fw-semibold">Last Name</label>
+                        <input type="text"
+                               class="form-control bg-dark text-light border-secondary rounded-pill px-3 py-2"
+                               name="lastName" value="@Model.LastName" required>
+                    </div>
+        
+                    <div class="mb-3">
+                        <label class="text-warning small mb-1">About Me / Description</label>
+                        <textarea class="form-control bg-dark text-light border-secondary rounded-3" name="description"
+                                  rows="3" placeholder="Write something about yourself...">@Model.Description</textarea>
+                    </div>
 
-                <div class="mb-3">
-                    <label class="form-label text-warning small fw-semibold">Email Address</label>
-                    <input type="email" class="form-control bg-dark text-light border-secondary rounded-pill px-3 py-2"
-                           value="@Model.Email" readonly>
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label text-warning small fw-semibold">Email Address</label>
+                        <input type="email"
+                               class="form-control bg-dark text-light border-secondary rounded-pill px-3 py-2"
+                               value="@Model.Email" readonly disabled>
+                    </div>
 
-                <div class="mt-auto pt-3 d-flex justify-content-between align-items-center">
+                    <div class="d-grid mb-3">
+                        <button type="submit" class="btn btn-warning rounded-pill fw-bold text-dark py-2">
+                            <i class="bi bi-check-circle me-1"></i> Update Profile
+                        </button>
+                    </div>
+                </form>
+
+                <div class="mt-auto pt-2 d-flex justify-content-between align-items-center">
                     <a asp-controller="Home" asp-action="Index" class="btn btn-outline-light rounded-pill px-3 btn-sm">
                         <i class="bi bi-arrow-left me-1"></i> Home
                     </a>
 
                     @* Delete Profile Form *@
-                    <form asp-controller="Events" asp-action="DeleteEvent" method="post"
+                    <form asp-controller="Account" asp-action="DeleteAccount" method="post"
                           onsubmit="return confirm('Are you sure you want to delete your profile?');">
                         <button type="submit" class="btn btn-outline-danger rounded-pill px-3 btn-sm fw-bold">
                             <i class="bi bi-trash me-1"></i> Delete Profile

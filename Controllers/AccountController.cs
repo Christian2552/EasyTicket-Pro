@@ -155,6 +155,38 @@ namespace EasyTicket_Pro.Controllers
             return View("~/Views/Home/ProfilePage.cshtml", user);
         }
 
+        // POST: /Account/UpdateProfile (CRUD - Update)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdateProfile(string firstName, string lastName, string? description)
+        {
+            var userEmail = User.Identity?.Name;
+
+            if (string.IsNullOrEmpty(userEmail))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var user = _context.Users.FirstOrDefault(u => u.Email == userEmail);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            // Актуализираме полетата с новите стойности подадени от формата
+            user.FirstName = firstName;
+            user.LastName = lastName;
+            user.Description = description;
+
+            _context.Users.Update(user);
+            _context.SaveChanges();
+
+            TempData["SuccessMessage"] = "Profile updated successfully!";
+            return RedirectToAction("ProfilePage");
+        }
+
+        // POST: /Account/DeleteAccount (CRUD - Delete)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteAccount()
