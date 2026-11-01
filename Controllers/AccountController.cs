@@ -122,5 +122,29 @@ namespace EasyTicket_Pro.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
         }
+
+
+        [HttpGet]
+        public IActionResult ProfilePage()
+        {
+            // Get the email of the currently logged-in user
+            var userEmail = User.Identity?.Name;
+
+            if (string.IsNullOrEmpty(userEmail))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            // Find the user in the database based on the email
+            var user = _context.Users.FirstOrDefault(u => u.Email == userEmail);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            // Pass the user data to the view
+            return View("~/Views/Home/ProfilePage.cshtml", user);
+        }
     }
 }
